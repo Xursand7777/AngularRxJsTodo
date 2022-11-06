@@ -1,0 +1,23 @@
+<div class='m-2'>
+  <p>
+    Задача 01 <br/>
+    Сделать изменение счетчика по кнопкам через store, как мы и делали. При клике на счетчик он либо увеличивается на 1, либо уменьшается на 1.
+    Диапазон допустимых значений: От 1 до 10 включительно. Если дошли до 1, то при щелчке на кнопку счетчик перестает уменьшаться, а остается 1,
+    при клике на 10 та же история, выше не переходим. Значение по-умолчанию - 1. <br />
+    Ниже под списком выводим пользователя, которого нашли в нашем списке по id. Если пользователь не найден, выводим сообщение, что такого пользователя нет
+    <br /><br />
+    Пример состояния показан ниже.
+    <br />
+    Задачу реализовать так же через store и actions с учетом unidirectional flow (наших стрелочек, которые мы делали)
+  </p>
+  <button (click)="onDecrementClick()" class='btn btn-primary'>&lt;</button>
+  <span class='alert'>{{ counter$$ | async}}</span>
+  <button (click)="onIncrementClick()"  class='btn btn-primary'>&gt;</button>
+</div>
+
+<div class='m-2' *ngIf="foundUser$$ | async as user; else notFound">
+  The user with id={{user.id}} is {{user.name}} <br />
+</div>
+<ng-template #notFound>
+  <span>// The user with id={{counter$$ | async}} does not exist</span>
+</ng-template>
