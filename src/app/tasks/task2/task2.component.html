@@ -1,9 +1,10 @@
 <div class='m-2'>
 
-  <b>Задача 02</b> <br/>
+  <b>Задача 02</b> <br />
   Разобьем ее на несколько частей, будешь сдавать ее частями. <br /><br />
   <strong>Часть первая</strong><br />
-  Добавить по клику на кнопку "add random number" случайное число от 1 до 100 в коллекцию внизу, там где сейчас 30, 3, 6. По клику число должно
+  Добавить по клику на кнопку "add random number" случайное число от 1 до 100 в коллекцию внизу, там где сейчас 30, 3,
+  6. По клику число должно
   добавляться в конец списка<br /><br />
 
   <strong>Часть вторая</strong><br />
@@ -15,20 +16,20 @@
     <li>среднее значение из всех чисел</li>
   </ul>
 
-  <button  class='btn btn-primary'>Add random number</button>
+  <button (click)="addRandomNumber()" class='btn btn-primary'>Add random number</button>
 </div>
 
 <div class='m-2 row'>
-  <div  class='col col-3'>
+  <div class='col col-3'>
     <div>Numbers in collection: </div>
-   0, 20, 30, 40
+    {{(randomNumbers$ | async)?.join(', ')}}
   </div>
 
   <div class='col col-3' style='color: black'>
     <div>Statistics: (вторая часть задачи)</div>
-    <div>Count: 0</div>
-    <div>Min: 1</div>
-    <div>Max: 2</div>
-    <div>Average: 3</div>
+    <div>Count: {{(numbersCount$ | async)}}</div>
+    <div>Min: {{(minNumber$ | async)}}</div>
+    <div>Max: {{(maxNumber$ | async)}}</div>
+    <div>Average: {{(averageNumber$ | async)}}</div>
   </div>
 </div>

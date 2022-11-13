@@ -1,26 +1,28 @@
 <div class='m-2'>
 
-  <b>Задача 03</b> <br/>
+  <b>Задача 03</b> <br />
   Все то же самое что и в задании 2, только randomNumber должен получаться с сервера:<br />
   <code>GET http://localhost:3000/randomNumber</code> <br />
   На момент получения данных с сервера кнопка "add random number" должна быть задизейблена
 </div>
 
 <div class='m-2'>
-  <button class='btn btn-primary'>Add random number</button>
+  <button (click)="addRandomNumber()" [disabled]="isHttpLoading$ | async" class='btn btn-primary'>Add random number</button>
 </div>
 
 <div class='m-2 row'>
-  <div  class='col col-3'>
+  <div class='col col-3'>
     <div>Numbers in collection: </div>
-    <div>2</div>
+    <div>
+      {{(randomNumbers$ | async)?.join(', ')}}
+    </div>
   </div>
 
   <div class='col col-3' style='color: black'>
     <div>Statistics: (вторая часть задачи)</div>
-    <div>Count: 1</div>
-    <div>Min: 2</div>
-    <div>Max: 3</div>
-    <div>Average: 4</div>
+    <div>Count: {{(numbersCount$ | async)}}</div>
+    <div>Min: {{(minNumber$ | async)}}</div>
+    <div>Max: {{(maxNumber$ | async)}}</div>
+    <div>Average: {{(averageNumber$ | async)}}</div>
   </div>
 </div>
